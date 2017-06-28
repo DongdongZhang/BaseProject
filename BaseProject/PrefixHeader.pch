@@ -1,0 +1,108 @@
+//
+//  PrefixHeader.pch
+//  BaseProject
+//
+//  Created by 瓦栏 on 2017/6/28.
+//  Copyright © 2017年 Qingshan. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+//1.引入常用头文件
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+//
+////Category
+#import "Singleton.h"
+#import "UITableViewCell+WLCell.h"
+
+
+
+#import "WLBaseNavigationController.h"
+#import "WLBaseWebViewController.h"
+
+//账号管理
+#import "UserManager.h"
+
+//第三方头文件
+// 只要添加了这个宏，就不用带mas_前缀
+//#define MAS_SHORTHAND
+// 只要添加了这个宏，equalTo就等价于mas_equalTo
+//#define MAS_SHORTHAND_GLOBALS
+#import "Masonry.h"
+#import "MJRefresh.h"
+#import "MJExtension.h"
+#import "MBProgressHUD+RY.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "UIImageView+WebCache.h"
+#import "HMSegmentedControl.h"
+#import "TYAlertController.h"
+#import "YYKit.h"
+#import "CHTCollectionViewWaterfallLayout.h"
+#import "UIViewController+CYLTabBarControllerExtention.h"
+#import "CYLTabBarController.h"
+#import "JKCategories.h"
+
+//2.日志输出宏定义
+#ifdef DEBUG
+//调试状态
+#define MyLog(...) NSLog(__VA_ARGS__)
+#else
+//发布状态
+#define MyLog(...)
+
+#endif
+
+
+//3.获得RGB颜色
+#define RGBAColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
+#define RGBColor(r, g, b) RGBAColor(r,g,b,1.0)
+
+// 随机色
+#define RandomColor RGBColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+
+
+#define kButtonNomalColor [UIColor colorWithHexString:@"39A1DB"] //正常颜色
+#define kButtonHighlightColor [UIColor colorWithHexString:@"#E6C800"] //高亮颜色
+#define kButtonForbiddenColor [UIColor colorWithHexString:@"F3F3F3"] //禁用颜色
+#define kBasisYellowColor [UIColor colorWithHexString:@"FFE118"]
+#define kBasisGrayColor [UIColor colorWithHexString:@"989898"]
+#define kBasisGrayLineColor [UIColor colorWithHexString:@"D1D1D1"]
+
+//4. 定义高度
+#define kUIScreenSize [UIScreen mainScreen].bounds.size
+#define kUIScreenWidth kUIScreenSize.width
+#define kUIScreenHeight kUIScreenSize.height
+#define kNavigationBarHeight 64
+#define kTabBarHeight 49
+#define kMarginNormal 16
+#define kCellNormalHeight 50
+
+// 缩放比
+#define kScale ([UIScreen mainScreen].bounds.size.width) / 375
+#define hScale ([UIScreen mainScreen].bounds.size.height) / 667
+
+//系统版本号
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+
+//5.定义常用Key
+#define kLoginStateKey @"LoginStateKey"
+#define kLoginError @"LoginError"
+
+//用户登录状态
+#define kUserLogin [[NSUserDefaults standardUserDefaults] boolForKey:kLoginStateKey]
+
+#define kLoginSuccessNotification @"LoginSuccessNotification"
+#define kUserExitNotification @"UserExitNotification"
+
+
+
+
+#endif /* PrefixHeader_pch */
